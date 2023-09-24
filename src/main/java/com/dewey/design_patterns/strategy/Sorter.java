@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @auther dewey
+ * @author dewey
  * @date 2022/5/20 9:24
  */
 public class Sorter<T> {
-    public void sort(T[] arr, Comparator<T> comparator){
+    public void sort(T[] arr, Comparator<T> comparator) {
         for (int i = 0; i < arr.length; i++) {
             int minPos = i;
             for (int j = i + 1; j < arr.length; j++) {
-                minPos = comparator.compare(arr[i],arr[minPos]) == -1 ? j:minPos;
+                minPos = comparator.compare(arr[i], arr[minPos]) == -1 ? j : minPos;
             }
             swap(arr, i, minPos);
         }
@@ -43,19 +43,21 @@ public class Sorter<T> {
         lb.add(new BigDecimalA("0.1", amount));
         lb.add(new BigDecimalA("0.12", amount));
         final BigDecimal[] bigDecimal = {new BigDecimal("0.0")};
-        lb.forEach(l ->{
+        lb.forEach(l -> {
             bigDecimal[0] = bigDecimal[0].add(l.getAmount());
         });
         System.out.println(bigDecimal[0]);
     }
-    public static void getList(List<String> list){
+
+    public static void getList(List<String> list) {
         List<String> list2 = list;
         list2.remove(0);
         list2.remove(0);
         list = list2;
     }
 }
-class BigDecimalA{
+
+class BigDecimalA {
     public BigDecimalA(String name, BigDecimal amount) {
         this.name = name;
         this.amount = amount;
