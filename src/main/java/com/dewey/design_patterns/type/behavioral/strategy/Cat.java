@@ -22,4 +22,7 @@ public class Cat implements Comparable<Cat> {
         return 0;
     }
 
+    public int getHeight() {
+        return height;
+    }
 }

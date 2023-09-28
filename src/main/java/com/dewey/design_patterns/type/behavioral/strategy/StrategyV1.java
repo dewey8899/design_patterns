@@ -12,7 +12,10 @@ public class StrategyV1 {
         Cat cat2 = new Cat( 1);
         Cat cat3 = new Cat( 3);
         Cat[] cats = {cat1, cat2, cat3};
-        Sorter sorter = new Sorter();
+        Sorter<Cat> sorter = new Sorter();
         sorter.sort(cats, (o1, o2) -> 0);
+        for (Cat cat : cats) {
+            System.out.println(cat.getHeight());
+        }
     }
 }
