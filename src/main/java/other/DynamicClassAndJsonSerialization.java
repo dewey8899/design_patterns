@@ -8,15 +8,12 @@ package other;
 
 
 import cn.hutool.json.JSONUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.lang.reflect.Field;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DynamicClassAndJsonSerialization {
@@ -102,7 +99,11 @@ public class DynamicClassAndJsonSerialization {
         field.set(object, value);
     }
 
-    // 辅助函数：将字符串的首字母大写
+    /**
+     * 辅助函数：将字符串的首字母大写
+     * @param str
+     * @return
+     */
     private static String capitalize(String str) {
         if (str == null || str.isEmpty()) {
             return str;
