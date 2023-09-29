@@ -15,7 +15,7 @@ public class DynamicClassLoader extends ClassLoader {
         super(parent);
     }
 
-    public Class<?> defineClass(String name, String classDefinition) throws Exception {
+    public Class<?> defineClass(String name, String classDefinition) {
         // 获取编译器
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
@@ -51,7 +51,9 @@ public class DynamicClassLoader extends ClassLoader {
         return defineClass(name, bytecode, 0, bytecode.length);
     }
 
-    // 用于在内存中创建源文件的辅助类
+    /**
+     * 用于在内存中创建源文件的辅助类
+     */
     private static class JavaSourceFromString extends SimpleJavaFileObject {
         final String code;
 
