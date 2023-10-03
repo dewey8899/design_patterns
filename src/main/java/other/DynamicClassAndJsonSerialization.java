@@ -17,11 +17,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DynamicClassAndJsonSerialization {
+
+    public static class ParamClass{
+        /**
+         * 属性名称
+         */
+        private String columnName;
+        /**
+         * 属性类型
+         */
+        private String dataType;
+        /**
+         * 来自哪个字段
+         */
+        private String dataValueFromField;
+
+    }
+    public static List<Triple<String, String, Object>> getListTriple(List<ParamClass> paramClassList){
+        List<Triple<String, String, Object>> listTriple = new ArrayList<>();
+//        paramClassList.forEach(s->{
+//            listTriple.add(Triple.of(paramClassList.get, "String", "石家庄市"));
+//        });
+        return listTriple;
+    }
     public static void main(String[] args) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dateStr = "2021-08-19";
-        LocalDate date = LocalDate.parse(dateStr, fmt);
-
+        Field[] declaredFields = ParamClass.class.getDeclaredFields();
+        for (Field field : declaredFields) {
+            String name = field.getName();
+            System.out.println(name);
+            String typeName = field.getType().getTypeName();
+            System.out.println(typeName);
+        }
         // 参数和数据类型的映射（模拟数据库中的参数和数据类型）
         List<Triple<String, String, Object>> listTriple = new ArrayList<>();
         listTriple.add(Triple.of("city", "String", "石家庄市"));
@@ -54,7 +81,6 @@ public class DynamicClassAndJsonSerialization {
                 }
             });
             // 使用Jackson库将对象序列化为JSON
-            JSONUtil.toJsonStr(dynamicObject);
             System.out.println("序列化为JSON: ");
             System.out.println(JSONUtil.toJsonStr(dynamicObject));
         } catch (Exception e) {
@@ -63,7 +89,7 @@ public class DynamicClassAndJsonSerialization {
     }
 
     // 生成动态类
-    private static Class<?> generateDynamicClass(String className, List<Triple<String, String, Object>> listTriple) throws Exception {
+    private static Class<?> generateDynamicClass(String className, List<Triple<String, String, Object>> listTriple) {
         ClassLoader classLoader = DynamicClassAndJsonSerialization.class.getClassLoader();
         DynamicClassLoader dynamicClassLoader = new DynamicClassLoader(classLoader);
 

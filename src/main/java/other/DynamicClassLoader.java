@@ -29,8 +29,7 @@ public class DynamicClassLoader extends ClassLoader {
             @Override
             public JavaFileObject getJavaFileForOutput(
                     Location location, String className, JavaFileObject.Kind kind, FileObject sibling) {
-                return new SimpleJavaFileObject(URI.create("string:///" + className.replace('.', '/') + kind.extension),
-                        kind) {
+                return new SimpleJavaFileObject(URI.create("string:///" + className.replace('.', '/') + kind.extension), kind) {
                     @Override
                     public OutputStream openOutputStream() {
                         return byteArrayOutputStream;
@@ -43,7 +42,7 @@ public class DynamicClassLoader extends ClassLoader {
         JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, null, null, null, Collections.singletonList(sourceFile));
         boolean success = task.call();
         if (!success) {
-            throw new RuntimeException("Compilation failed");
+            throw new RuntimeException("编译失败");
         }
 
         // 定义类
