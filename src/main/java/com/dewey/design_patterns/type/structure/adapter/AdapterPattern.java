@@ -7,7 +7,7 @@ package com.dewey.design_patterns.type.structure.adapter;
  */
 public class AdapterPattern {
     public static void main(String[] args) {
-        Adapter adapter = new Adapter(new Adaptee());
+        Target adapter = new Adapter(new Adaptee());
         adapter.adapter10v();
     }
 }
