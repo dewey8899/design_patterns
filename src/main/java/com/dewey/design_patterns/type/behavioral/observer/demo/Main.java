@@ -13,14 +13,14 @@ public class Main {
 
     public static void main(String[] args) {
         //粉丝1订阅
-        MyObserver observer1 = new MyObserver("粉丝-dewey.du ", (key,message) -> {
+        MyObserver observer1 = new MyObserver("dewey.du ", (key,message) -> {
             //这里进行消息处理
-            System.out.println( key + "---------接收到消息:《" + message+"》");
+            System.out.println( key + "---------接收到消息:《" + String.format(message,key)+"》");
         });
         //粉丝2订阅
-        MyObserver observer2 = new MyObserver("粉丝-michelle.gong", (key,message) -> {
+        MyObserver observer2 = new MyObserver("michelle.gong", (key,message) -> {
             //这里进行消息处理
-            System.out.println( key + "---------接收到消息:《" + message+"》");
+            System.out.println( key + "---------接收到消息:《" + String.format(message,key)+"》");
         });
 
         //加入观察者列表
@@ -29,7 +29,7 @@ public class Main {
         myObservable.addObserver(observer2);
 
         //通知所有订阅的观察者
-        myObservable.sendMessage("大家好，菲儿已开播了,赶快来我直播间吧！");
+        myObservable.sendMessage("%s好，菲儿已开播了,赶快来我直播间吧！");
         myObservable.removeObserver(observer2);
         myObservable.sendMessage("大家好，雪儿已开播了,赶快来我直播间吧！");
     }
