@@ -14,6 +14,9 @@ public class MyObservable implements Observable{
     private static volatile MyObservable instance = null;
     private MyObservable() {
     }
+
+    //维护的观察者列表
+    private final List<Observer> mObservers = new ArrayList<>();
     //生成单例的方法
     public static MyObservable getInstance() {
         if (instance == null) {
@@ -38,8 +41,6 @@ public class MyObservable implements Observable{
     }
 
 
-    //维护的观察者列表
-    private final List<Observer> mObservers = new ArrayList<>();
 
     @Override
     public void addObserver(Observer observer) {
