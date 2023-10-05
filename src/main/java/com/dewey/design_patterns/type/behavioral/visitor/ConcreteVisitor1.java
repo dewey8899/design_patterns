@@ -15,7 +15,7 @@ public class ConcreteVisitor1  implements Visitor{
 
     @Override
     public void visit(ConcreteElements2 elements) {
-        System.out.print("具体访问者2访问-》");
+        System.out.print("具体访问者1访问-》");
         elements.operator2();
     }
 }
