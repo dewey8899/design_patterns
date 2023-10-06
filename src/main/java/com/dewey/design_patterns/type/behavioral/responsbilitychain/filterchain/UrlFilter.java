@@ -1,4 +1,4 @@
-package com.dewey.design_patterns.type.behavioral.filterchain;
+package com.dewey.design_patterns.type.behavioral.responsbilitychain.filterchain;
 
 /**
  * @auther dewey

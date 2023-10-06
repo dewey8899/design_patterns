@@ -1,4 +1,4 @@
-package com.dewey.design_patterns.type.behavioral.filterchain2;
+package com.dewey.design_patterns.type.behavioral.responsbilitychain.filterchain2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,14 @@
-package com.dewey.design_patterns.type.behavioral.filterchain2;
+package com.dewey.design_patterns.type.behavioral.responsbilitychain.filterchain2;
 
 /**
  * @auther dewey
  * @date 2022-6-5 22:23:48
  */
-public class UrlFilter implements Filter {
+public class FaceFilter implements Filter {
     @Override
     public void doFilter(Request request,Response response,FilterChain chain) {
-        String msg1 = request.getMsg();
-        String replaceS = msg1.replace("www.dewey.com", "http://www.dewey.com");
+        String msg = request.getMsg();
+        String replaceS = msg.replace("):", "^v^");
         request.setMsg(replaceS);
         chain.doFilter(request,response);
         response.setMsg(response.getMsg()+" response");
